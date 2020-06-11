@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    public class Class1
+    public class Perfil
     {
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+        public bool Estado { get; set; }
     }
 }
