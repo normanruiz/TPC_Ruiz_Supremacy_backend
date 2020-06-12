@@ -13,6 +13,5 @@ namespace Modelo
         public string Apellido { get; set; }
         public string Correo { get; set; }
         public bool Estado { get; set; }
-
     }
 }

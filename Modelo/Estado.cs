@@ -10,6 +10,6 @@ namespace Modelo
     {
         public int Id { get; set; }
         public string Tipo { get; set; }
-        public bool Estado { get; set; }
+        public bool estado { get; set; }
     }
 }

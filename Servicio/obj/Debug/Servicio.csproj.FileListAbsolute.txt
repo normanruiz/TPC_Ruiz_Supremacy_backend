@@ -1,0 +1,9 @@
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\bin\Debug\Servicio.dll
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\bin\Debug\Servicio.pdb
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\bin\Debug\Modelo.dll
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\bin\Debug\Modelo.pdb
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\obj\Debug\Servicio.csprojAssemblyReference.cache
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\obj\Debug\Servicio.csproj.CoreCompileInputs.cache
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\obj\Debug\Servicio.csproj.CopyComplete
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\obj\Debug\Servicio.dll
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Servicio\obj\Debug\Servicio.pdb
