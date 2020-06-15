@@ -97,3 +97,6 @@ C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\obj\Deb
 C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\obj\Debug\Controlador.csproj.CopyComplete
 C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\obj\Debug\Controlador.dll
 C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\obj\Debug\Controlador.pdb
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\bin\System.Web.Cors.dll
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\bin\System.Web.Http.Cors.dll
+C:\Users\Norman Ruiz\source\repos\TPC_Ruiz_Supremacy_backend\Controlador\bin\System.Web.Http.Cors.xml

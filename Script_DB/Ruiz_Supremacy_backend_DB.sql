@@ -17,6 +17,10 @@ insert into Perfiles values ('Administrador', 1);
 insert into Perfiles values ('Recepcionista', 1);
 insert into Perfiles values ('Medico', 1);
 
+update perfiles set tipo= 'alalal', estado=0 where id = 4;  
+
+delete from perfiles where id=4;
+
 select p.Id, p.Tipo, p.Estado from perfiles as p;
 
 create table usuarios(

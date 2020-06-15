@@ -46,6 +46,7 @@
     <Compile Include="ServicioEspecialidad.cs" />
     <Compile Include="ServicioMedico.cs" />
     <Compile Include="ServicioPaciente.cs" />
+    <Compile Include="ServicioPerfil.cs" />
     <Compile Include="ServicioUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
