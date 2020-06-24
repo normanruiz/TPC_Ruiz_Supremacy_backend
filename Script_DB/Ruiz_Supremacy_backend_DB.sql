@@ -35,8 +35,8 @@ create table usuarios(
 );
 
 insert into usuarios values('Norman','Ruiz','norman.ruiz@icloud.com', 1, 'nruiz','Usuario@1234#',1);
-insert into usuarios values('Cecilia','Lupani','lalala@icloud.com', 2, 'clupani','Usuario@1234#',1);
-insert into usuarios values('Natalia','Spini','maslalala@icloud.com', 3, 'nspini','Usuario@1234#',1);
+insert into usuarios values('Cecilia','Lupani','lalala@icloud.com', 3, 'clupani','Usuario@1234#',1);
+insert into usuarios values('Natalia','Spini','maslalala@icloud.com', 2, 'nspini','Usuario@1234#',1);
 
 select u.Id, u.Nombre, u.Apellido, u.Correo, u.IdPerfil, p.Tipo, u.Usr, u.Pwd, u.Estado from usuarios as u inner join perfiles as p on u.IdPerfil = p.Id;
 
@@ -48,7 +48,7 @@ create table medicos(
 	Estado bit not null 
 );
 
-insert into medicos values ('Natalia Gabriela', 'Spini', 'maslalala@icloud.com', 1);
+insert into medicos values ('Cecilia', 'Lupani', 'maslalala@icloud.com', 1);
 insert into medicos values ('Kristen', 'Stewart', 'lalala1@icloud.com', 1);
 insert into medicos values ('Emily', 'Blunt', 'lalala2@icloud.com', 1);
 insert into medicos values ('Alicia', 'Vikander', 'maslalala3@icloud.com', 1);
