@@ -63,6 +63,11 @@ insert into medicos values ('Amy', 'Adams', 'maslalala7@icloud.com', 1);
 
 select m.Id, m.Nombre, m.Apellido, m.Correo, m.Estado from medicos as m;
 
+update medicos set Nombre='', Apellido='', Correo='', Estado= 1 where Id = 
+
+delete from medicos where Id = 1
+
+
 create table notas(
 	Id int primary key identity(1,1),
 	Fecha datetime not null, 
