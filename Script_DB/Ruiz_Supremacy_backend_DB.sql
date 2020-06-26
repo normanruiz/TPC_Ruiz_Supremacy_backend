@@ -40,6 +40,10 @@ insert into usuarios values('Natalia','Spini','maslalala@icloud.com', 2, 'nspini
 
 select u.Id, u.Nombre, u.Apellido, u.Correo, u.IdPerfil, p.Tipo, u.Usr, u.Pwd, u.Estado from usuarios as u inner join perfiles as p on u.IdPerfil = p.Id;
 
+update usuarios set Nombre='', Apellido='', Correo='', IdPerfil= 1, Usr='',Pwd='', Estado= 1 where Id = 5
+
+delete from usuarios where Id = 4
+
 create table medicos(
 	Id int primary key identity(1,1),
 	Nombre varchar(50) not null,

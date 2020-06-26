@@ -51,5 +51,99 @@ namespace Servicio
                 }
             }
         }
+
+        public bool AgregarNuevo(Usuario usuario)
+        {
+            AccesoDatos conexion = null;
+            bool progreso = false;
+            try
+            {
+                conexion = new AccesoDatos();
+                conexion.Conectar();
+                conexion.LimpiarParametro();
+                conexion.AgregarParametro("@nombre", usuario.Nombre);
+                conexion.AgregarParametro("@apellido", usuario.Apellido);
+                conexion.AgregarParametro("@correo", usuario.Correo);
+                conexion.AgregarParametro("@idPerfil", usuario.Perfil.Id.ToString());
+                conexion.AgregarParametro("@usr", usuario.Usr);
+                conexion.AgregarParametro("@pwd", usuario.Pwd);
+                conexion.EjecutarAccion("insert into usuarios values(@nombre, @apellido, @correo, @idPerfil, @usr, @pwd, 1)");
+                progreso = true;
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
+            finally
+            {
+                if (conexion != null)
+                {
+                    conexion.Desconectar();
+                }
+            }
+            return progreso;
+        }
+
+        public bool GuardarModificado(Usuario usuario)
+        {
+            AccesoDatos conexion = null;
+            bool progreso = false;
+            try
+            {
+                conexion = new AccesoDatos();
+                conexion.Conectar();
+                conexion.LimpiarParametro();
+                conexion.AgregarParametro("@id", usuario.Id.ToString());
+                conexion.AgregarParametro("@nombre", usuario.Nombre);
+                conexion.AgregarParametro("@apellido", usuario.Apellido);
+                conexion.AgregarParametro("@correo", usuario.Correo);
+                conexion.AgregarParametro("@idPerfil", usuario.Perfil.Id.ToString());
+                conexion.AgregarParametro("@usr", usuario.Usr);
+                conexion.AgregarParametro("@pwd", usuario.Pwd);
+                conexion.AgregarParametro("@estado", usuario.Estado.ToString());
+                conexion.EjecutarAccion("update usuarios set Nombre = @nombre, Apellido = @apellido, Correo = @correo, IdPerfil = @idPerfil, Usr = @usr, Pwd = @pwd, Estado = @estado where Id = @id");
+                progreso = true;
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
+            finally
+            {
+                if (conexion != null)
+                {
+                    conexion.Desconectar();
+                }
+            }
+            return progreso;
+        }
+
+        public bool EliminarFisico(int Id)
+        {
+            bool progreso = false;
+            AccesoDatos conexion = null;
+            try
+            {
+                conexion = new AccesoDatos();
+                conexion.Conectar();
+                conexion.LimpiarParametro();
+                conexion.AgregarParametro("@Id", Id.ToString());
+
+                conexion.EjecutarAccion("delete from usuarios where Id=@Id");
+                progreso = true;
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
+            finally
+            {
+                if (conexion != null)
+                {
+                    conexion.Desconectar();
+                }
+            }
+            return progreso;
+        }
     }
 }
