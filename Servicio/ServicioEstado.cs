@@ -7,39 +7,30 @@ using System.Threading.Tasks;
 
 namespace Servicio
 {
-    public class ServicioNota
+    public class ServicioEstado
     {
-        public List<Nota> Listar(int idFiltrar = 0)
+        public List<Estado> Listar()
         {
-            List<Nota> listadoNotas;
-            Nota nota;
+            List<Estado> listadoEstado;
+            Estado estado;
             AccesoDatos conexion = null;
             try
             {
-                listadoNotas = new List<Nota>();
+                listadoEstado = new List<Estado>();
                 conexion = new AccesoDatos();
                 conexion.Conectar();
-                if(idFiltrar != 0)
-                {
-                    conexion.EjecutarConsulta("select n.Id, n.IdPaciente, n.Fecha, n.Detalle, n.Estado from notas as n where n.IdPaciente = " + idFiltrar.ToString());
-                }
-                else
-                {
-                    conexion.EjecutarConsulta("select n.Id, n.IdPaciente, n.Fecha, n.Detalle, n.Estado from notas as n");
-                }
+                conexion.EjecutarConsulta("select e.Id, e.Tipo, e.Estado from estados as e");
                 while (conexion.Lector.Read())
                 {
-                    nota = new Nota();
-                    nota.Id = (int)conexion.Lector["Id"];
-                    nota.IdPaciente = (int)conexion.Lector["IdPaciente"];
-                    nota.Fecha = (DateTime)conexion.Lector["Fecha"];
-                    nota.Detalle = (string)conexion.Lector["Detalle"];
-                    nota.Estado = (bool)conexion.Lector["Estado"];
+                    estado = new Estado();
+                    estado.Id = (int)conexion.Lector["Id"];
+                    estado.Tipo = (string)conexion.Lector["Tipo"];
+                    estado.estado = (bool)conexion.Lector["Estado"];
 
-                    listadoNotas.Add(nota);
+                    listadoEstado.Add(estado);
                 }
 
-                return listadoNotas;
+                return listadoEstado;
             }
             catch (Exception excepcion)
             {
@@ -55,7 +46,7 @@ namespace Servicio
 
         }
 
-        public bool AgregarNuevo(Nota nota)
+        public bool AgregarNuevo(Estado estado)
         {
             AccesoDatos conexion = null;
             bool progreso = false;
@@ -64,10 +55,8 @@ namespace Servicio
                 conexion = new AccesoDatos();
                 conexion.Conectar();
                 conexion.LimpiarParametro();
-                conexion.AgregarParametro("@idPaciente", nota.IdPaciente.ToString());
-                conexion.AgregarParametro("@fecha", nota.Fecha.ToString("yyyy-MM-dd"));
-                conexion.AgregarParametro("@detalle", nota.Detalle);
-                conexion.EjecutarAccion("insert into notas values (@idPaciente, @fecha, @detalle, 1)");
+                conexion.AgregarParametro("@tipo", estado.Tipo);
+                conexion.EjecutarAccion("insert into estados values (@Tipo, 1)");
                 progreso = true;
             }
             catch (Exception excepcion)
@@ -84,7 +73,7 @@ namespace Servicio
             return progreso;
         }
 
-        public bool GuardarModificado(Nota nota)
+        public bool GuardarModificado(Estado estado)
         {
             AccesoDatos conexion = null;
             bool progreso = false;
@@ -93,12 +82,10 @@ namespace Servicio
                 conexion = new AccesoDatos();
                 conexion.Conectar();
                 conexion.LimpiarParametro();
-                conexion.AgregarParametro("@id", nota.Id.ToString());
-                conexion.AgregarParametro("@idPaciente", nota.IdPaciente.ToString());
-                conexion.AgregarParametro("@fecha", nota.Fecha.ToString("yyyy-MM-dd"));
-                conexion.AgregarParametro("@detalle", nota.Detalle);
-                conexion.AgregarParametro("@estado", nota.Estado.ToString());
-                conexion.EjecutarAccion("update notas set IdPaciente = @idPaciente, Fecha = @fecha, detalle = @detalle, Estado = @estado where Id = @id");
+                conexion.AgregarParametro("@id", estado.Id.ToString());
+                conexion.AgregarParametro("@tipo", estado.Tipo);
+                conexion.AgregarParametro("@estado", estado.estado.ToString());
+                conexion.EjecutarAccion("update estados set Tipo = @tipo, Estado = @estado where Id = @id");
                 progreso = true;
             }
             catch (Exception excepcion)
@@ -126,7 +113,7 @@ namespace Servicio
                 conexion.LimpiarParametro();
                 conexion.AgregarParametro("@Id", Id.ToString());
 
-                conexion.EjecutarAccion("delete from notas where Id = @Id");
+                conexion.EjecutarAccion("delete from estados where Id = @Id");
                 progreso = true;
             }
             catch (Exception excepcion)

@@ -77,13 +77,28 @@ create table notas(
 
 );
 
-insert into notas values (1, GETDATE(), 'Completa locura, derecho al Borda',1)
+insert into notas values (1, '20201231', 'Completa locura, derecho al Borda',1)
 
 update notas set IdPaciente = , Fecha = , detalle = , Estado =  where Id = 
 
 select n.Id, n.idpaciente, n.Fecha, n.Detalle, n.Estado from notas as n;
 
 
+create table estados(
+	Id int primary key identity(1,1),
+	Tipo varchar(100) unique not null,
+	Estado bit not null
+);
+
+insert into estados values ('Nuevo', 1)
+insert into estados values ('Reprogramado', 1)
+insert into estados values ('Cancelado', 1)
+insert into estados values ('No Asistió', 1)
+insert into estados values ('Cerrado', 1)
+
+select e.Id, e.Tipo, e.Estado from estados as e
+
+update estados set Tipo = @tipo, Estado = @estado where Id = @id
 
 create table pacientes(
 	Id int primary key identity(1,1),
@@ -98,12 +113,4 @@ insert into pacientes values ('Norman','Ruiz','M', '19800402', 1);
 
 select p.Id, p.Nombre, p.Apellido, p.Sexo, p.FechaNacimiento, p.Estado from pacientes as p;
 
-create table notasxpacientes(
-	Id int primary key identity(1,1),
-	IdPaciente int foreign key references pacientes(Id),
-	IdNota int foreign key references notas(Id)
-);
 
-insert into notasxpacientes values (1,1);
-
-select nxp.Id, nxp.IdPaciente, nxp.IdNota from notasxpacientes as nxp;

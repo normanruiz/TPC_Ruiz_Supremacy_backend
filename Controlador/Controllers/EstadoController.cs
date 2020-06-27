@@ -10,18 +10,18 @@ using System.Web.Http.Cors;
 
 namespace Controlador.Controllers
 {
-    [EnableCors(origins: "*",headers:"*", methods:"*")]
-    public class PacienteController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class EstadoController : ApiController
     {
         [HttpGet]
-        public List<Paciente> Listar()
+        public List<Estado> Listar()
         {
-            ServicioPaciente servicioPaciente;
+            ServicioEstado servicioEstado;
 
             try
             {
-                servicioPaciente = new ServicioPaciente();
-                return servicioPaciente.Listar();
+                servicioEstado = new ServicioEstado();
+                return servicioEstado.Listar();
             }
             catch (Exception excepcion)
             {
@@ -30,13 +30,13 @@ namespace Controlador.Controllers
         }
 
         [HttpPost]
-        public bool Crear([FromBody]Paciente paciente)
+        public bool Crear([FromBody]Estado estado)
         {
-            ServicioPaciente servicioPaciente;
+            ServicioEstado servicioEstado;
             try
             {
-                servicioPaciente = new ServicioPaciente();
-                return servicioPaciente.AgregarNuevo(paciente);
+                servicioEstado = new ServicioEstado();
+                return servicioEstado.AgregarNuevo(estado);
             }
             catch (Exception excepcion)
             {
@@ -45,14 +45,14 @@ namespace Controlador.Controllers
         }
 
         [HttpPut]
-        public bool Put(int Id, [FromBody]Paciente paciente)
+        public bool Put(int Id, [FromBody]Estado estado)
         {
-            ServicioPaciente servicioPaciente;
+            ServicioEstado servicioEstado;
             try
             {
-                paciente.Id = Id;
-                servicioPaciente = new ServicioPaciente();
-                return servicioPaciente.GuardarModificado(paciente);
+                estado.Id = Id;
+                servicioEstado = new ServicioEstado();
+                return servicioEstado.GuardarModificado(estado);
             }
             catch (Exception excepcion)
             {
@@ -63,11 +63,11 @@ namespace Controlador.Controllers
         [HttpDelete]
         public bool Delete(int Id)
         {
-            ServicioPaciente servicioPaciente;
+            ServicioEstado servicioEstado;
             try
             {
-                servicioPaciente = new ServicioPaciente();
-                return servicioPaciente.EliminarFisico(Id);
+                servicioEstado = new ServicioEstado();
+                return servicioEstado.EliminarFisico(Id);
             }
             catch (Exception excepcion)
             {
