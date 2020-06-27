@@ -1,39 +1,78 @@
-﻿using System;
+﻿using Modelo;
+using Servicio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Controlador.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class NotaController : ApiController
     {
-        // GET: api/Nota
-        public IEnumerable<string> Get()
+        [HttpGet]
+        public List<Nota> Listar()
         {
-            return new string[] { "value1", "value2" };
+            ServicioNota servicioNota;
+
+            try
+            {
+                servicioNota = new ServicioNota();
+                return servicioNota.Listar();
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
         }
 
-        // GET: api/Nota/5
-        public string Get(int id)
+        [HttpPost]
+        public bool Crear([FromBody]Nota nota)
         {
-            return "value";
+            ServicioNota servicioNota;
+            try
+            {
+                servicioNota = new ServicioNota();
+                return servicioNota.AgregarNuevo(nota);
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
         }
 
-        // POST: api/Nota
-        public void Post([FromBody]string value)
+        [HttpPut]
+        public bool Put(int Id, [FromBody]Nota nota)
         {
+            ServicioNota servicioNota;
+            try
+            {
+                nota.Id = Id;
+                servicioNota = new ServicioNota();
+                return servicioNota.GuardarModificado(nota);
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
         }
 
-        // PUT: api/Nota/5
-        public void Put(int id, [FromBody]string value)
+        [HttpDelete]
+        public bool Delete(int Id)
         {
-        }
-
-        // DELETE: api/Nota/5
-        public void Delete(int id)
-        {
+            ServicioNota servicioNota;
+            try
+            {
+                servicioNota = new ServicioNota();
+                return servicioNota.EliminarFisico(Id);
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
         }
     }
 }

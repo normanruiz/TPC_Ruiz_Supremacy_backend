@@ -70,14 +70,20 @@ delete from medicos where Id = 1
 
 create table notas(
 	Id int primary key identity(1,1),
+	IdPaciente int foreign key references pacientes(Id),
 	Fecha datetime not null, 
 	Detalle varchar(max) not null,
-	Estado bit not null 
+	Estado bit not null
+
 );
 
-insert into notas values ('20200611', 'Estaba muy cansado, le dimos 1753 meses de licencia por estres.', 1);
+insert into notas values (1, GETDATE(), 'Completa locura, derecho al Borda',1)
 
-select n.Id, n.Fecha, n.Detalle, n.Estado from notas as n;
+update notas set IdPaciente = , Fecha = , detalle = , Estado =  where Id = 
+
+select n.Id, n.idpaciente, n.Fecha, n.Detalle, n.Estado from notas as n;
+
+
 
 create table pacientes(
 	Id int primary key identity(1,1),
