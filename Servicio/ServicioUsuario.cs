@@ -145,5 +145,50 @@ namespace Servicio
             }
             return progreso;
         }
-    }
+
+        public Usuario Registrarse(Usuario usr)
+        {
+            Usuario usuario = null;
+            AccesoDatos conexion = null;
+            try
+            {
+                conexion = new AccesoDatos();
+                conexion.Conectar();
+                conexion.EjecutarConsulta("select u.Id, u.Nombre, u.Apellido, u.Correo, u.IdPerfil, p.Tipo, u.Usr, u.Pwd, u.Estado from usuarios as u inner join perfiles as p on u.IdPerfil = p.Id");
+                while (conexion.Lector.Read())
+                {
+                    usuario = new Usuario();
+                    usuario.Id = (int)conexion.Lector["Id"];
+                    usuario.Nombre = (string)conexion.Lector["Nombre"];
+                    usuario.Apellido = (string)conexion.Lector["Apellido"];
+                    usuario.Correo = (string)conexion.Lector["Correo"];
+                    usuario.Perfil = new Perfil();
+                    usuario.Perfil.Id = (int)conexion.Lector["IdPerfil"];
+                    usuario.Perfil.Tipo = (string)conexion.Lector["Tipo"];
+                    usuario.Usr = (string)conexion.Lector["Usr"];
+                    usuario.Pwd = (string)conexion.Lector["Pwd"];
+                    usuario.Estado = (bool)conexion.Lector["Estado"];
+
+                    if (usuario.Usr == usr.Usr && usuario.Pwd == usr.Pwd)
+                    {
+                        break;
+                    }
+                    usuario = null;
+                }
+
+                return usuario;
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
+            finally
+            {
+                if (conexion != null)
+                {
+                    conexion.Desconectar();
+                }
+            }
+        }
+     }
 }

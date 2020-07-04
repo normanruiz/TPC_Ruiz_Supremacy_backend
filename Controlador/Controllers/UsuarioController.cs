@@ -30,6 +30,23 @@ namespace Controlador.Controllers
         }
 
         [HttpPost]
+        [Route("api/usuario/registrarse")]
+        public Usuario Registrarse([FromBody]Usuario usr)
+        {
+            ServicioUsuario servicioUsuario;
+
+            try
+            {
+                servicioUsuario = new ServicioUsuario();
+                return servicioUsuario.Registrarse(usr);
+            }
+            catch (Exception excepcion)
+            {
+                throw excepcion;
+            }
+        }
+
+        [HttpPost]
         public bool Crear([FromBody]Usuario usuario)
         {
             ServicioUsuario servicioUsuario;

@@ -9,8 +9,8 @@ namespace Modelo
     public class Horario
     {
         public int Id { get; set; }
-        public DateTime HoraInicio { get; set; }
-        public DateTime HoraFin { get; set; }
+        public DateTime Inicio { get; set; }
+        public DateTime Fin { get; set; }
         public bool Estado { get; set; }
     }
 }

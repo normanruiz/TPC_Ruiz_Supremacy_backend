@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servicio
 {
-    class ServicioEspecialidad
+    public class ServicioEspecialidad
     {
         public List<Especialidad> Listar()
         {
